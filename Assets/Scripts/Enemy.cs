@@ -127,21 +127,6 @@ public class Enemy : MonoBehaviour
         return velocity;
     }
 
-    public void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "TurnWest"){
-            direction = Vector3.left;
-        }
-        if(other.gameObject.tag == "TurnSouth"){
-            direction = Vector3.down;
-        }
-        if(other.gameObject.tag == "TurnEast"){
-            direction = Vector3.right;
-        }
-        if(other.gameObject.tag == "TurnNorth"){
-            direction = Vector3.up;
-        }
-    }
-
     public Effect GetEffect()
     {
         return effect;
