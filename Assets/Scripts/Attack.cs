@@ -62,8 +62,10 @@ public class Attack : MonoBehaviour
             || coll.gameObject.tag == "Static") {
             coll.gameObject.GetComponent<Enemy>().Hit(hitDamage, effect, this);
         }
-        Explode();
-        Destroy(gameObject);
+		//if(coll.gameObject.tag != "BackGround"){
+       		Explode();
+       	 	Destroy(gameObject);
+		//}
     }
 
     public void SetTtl(float ttl)

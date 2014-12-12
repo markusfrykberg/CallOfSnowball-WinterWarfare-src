@@ -22,6 +22,7 @@ public class Game : MonoBehaviour
         waveNumber = 0;
         waveRunning = false;
         Time.timeScale = 1;
+		Physics2D.IgnoreLayerCollision (8, 9, true);
     }
 
     public void Update()

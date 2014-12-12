@@ -11,47 +11,55 @@ public enum WaypointDirection{
 
 public class Waypoint : MonoBehaviour {
 
-	public WaypointDirection waypointDirection;
-	public Transform TeleportTarget;
-
+	//public WaypointDirection waypointDirection;
+	bool allowNorth;
+	bool allowEast;
+	bool allowSouth;
+	bool allowWest;
+	Transform teleportTarget;
+	BoxCollider2D wayPointColl;
 
 	void Start () {
 	}
-	
-	void Update () {
-	
-	}
+	public void SetVariables(bool _allowNorth, bool _allowEast, bool _allowSouth, bool _allowWest, Transform _teleportTarget){
+		allowNorth = _allowNorth;
+		allowEast = _allowEast;
+		allowSouth = _allowSouth;
+		allowWest = _allowWest;
+		if (_teleportTarget != null)
+			teleportTarget = _teleportTarget;
+	}	
+
 	public void OnTriggerEnter2D(Collider2D other) {
 		if(other.gameObject.GetComponent<Enemy>() != null){
 			Enemy otherScript = other.GetComponent<Enemy>();
 
-			//Change Direction
-			if(waypointDirection == WaypointDirection.north)
-				otherScript.direction = Vector3.up;
-			if(waypointDirection == WaypointDirection.east)
-				otherScript.direction = Vector3.right;
-			if(waypointDirection == WaypointDirection.south)
-				otherScript.direction = Vector3.down;
-			if(waypointDirection == WaypointDirection.west)
-				otherScript.direction = Vector3.left;
-
-			//Random Direction
-			if(waypointDirection == WaypointDirection.random){
+			bool repeat = true;
+			while(repeat){
 				int directionTemp = Random.Range(1, 5);
-				if(directionTemp == 1)
+				if(directionTemp == 1 && allowNorth){
 					otherScript.direction = Vector3.up;
-				if(directionTemp == 2)
+					repeat = false;
+				}
+				if(directionTemp == 2 && allowEast){
 					otherScript.direction = Vector3.right;
-				if(directionTemp == 3)
+					repeat = false;
+				}
+				if(directionTemp == 3 && allowSouth){
 					otherScript.direction = Vector3.down;
-				if(directionTemp == 4)
+					repeat = false;
+				}
+				if(directionTemp == 4 && allowWest){
 					otherScript.direction = Vector3.left;
+					repeat = false;
+				}
 			}
 
 			//Teleport
-			if(TeleportTarget != null){
-				other.transform.position = TeleportTarget.position;
+			if(teleportTarget != null){
+				other.transform.position = teleportTarget.position;
 			}
 		}
 	}
+
 }
