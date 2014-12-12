@@ -1,12 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Waypoint.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\..\My games\Wh40k003\Assets\Scripts\InfantryModel.cs">
     <Files>
-      <File FileName="Assets\Scripts\Waypoint.cs" Line="39" Column="29" />
-      <File FileName="Assets\Scripts\RegularSnowball.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SkiEnemy.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\RegularEnemy.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Enemy.cs" Line="128" Column="6" />
+      <File FileName="..\..\..\..\My games\Wh40k003\Assets\Scripts\InfantryModel.cs" Line="813" Column="8" />
+      <File FileName="..\..\..\..\My games\Wh40k003\Assets\InfantrySquad.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

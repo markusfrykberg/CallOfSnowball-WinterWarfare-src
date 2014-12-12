@@ -70,9 +70,6 @@
      <Compile Include="Assets\Scripts\Tower.cs" />
      <Compile Include="Assets\Scripts\TowerPlacement.cs" />
      <Compile Include="Assets\Scripts\TreeSnow.cs" />
-     <Compile Include="Assets\Scripts\TurnEast.cs" />
-     <Compile Include="Assets\Scripts\TurnNorth.cs" />
-     <Compile Include="Assets\Scripts\TurnWest.cs" />
      <Compile Include="Assets\Scripts\Water.cs" />
      <Compile Include="Assets\Scripts\WaterTower.cs" />
      <Compile Include="Assets\Scripts\Wave.cs" />
