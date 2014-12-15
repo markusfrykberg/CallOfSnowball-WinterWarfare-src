@@ -7,6 +7,7 @@ public class Wave : MonoBehaviour
     private int enemyNumber;
     private bool running;
     private double lastEnemyTime;
+	private double lastEnemyTime1;
 
     public void Start()
     {
@@ -23,6 +24,11 @@ public class Wave : MonoBehaviour
             } else {
                 Vector3 spawnPosition = GameObject.FindWithTag("EnemySpawner")
                     .transform.position;
+				Vector3 spawnPosition1 = GameObject.FindWithTag("EnemySpawner1")
+					.transform.position;
+
+				Instantiate(nextEnemy, spawnPosition1, Quaternion.identity);
+				lastEnemyTime1 = Time.time;
                 Instantiate(nextEnemy, spawnPosition, Quaternion.identity);
                 lastEnemyTime = Time.time;
             }
