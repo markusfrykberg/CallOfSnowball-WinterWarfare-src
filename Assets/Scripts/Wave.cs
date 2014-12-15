@@ -8,10 +8,13 @@ public class Wave : MonoBehaviour
     private bool running;
     private double lastEnemyTime;
 
+	private Vector3 spawnPosition;
+
     public void Start()
     {
         running = false;
         enemyNumber = 0;
+		spawnPosition = transform.parent.position;
     }
 
     public void Update()
@@ -21,8 +24,8 @@ public class Wave : MonoBehaviour
             if (nextEnemy == null) {
                 running = false;
             } else {
-                Vector3 spawnPosition = GameObject.FindWithTag("EnemySpawner")
-                    .transform.position;
+           //     Vector3 spawnPosition = GameObject.FindWithTag("EnemySpawner")
+           //         .transform.position;
                 Instantiate(nextEnemy, spawnPosition, Quaternion.identity);
                 lastEnemyTime = Time.time;
             }
