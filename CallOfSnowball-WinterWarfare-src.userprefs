@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Wave.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Waypoint.cs">
     <Files>
-      <File FileName="Assets\Scripts\Wave.cs" Line="28" Column="26" />
+      <File FileName="..\..\..\..\My games\Wh40k003\Assets\Scripts\InfantryModel.cs" Line="504" Column="7" />
+      <File FileName="..\..\..\..\My games\Wh40k003\Assets\Scripts\Manager\TurnManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Waypoint.cs" Line="30" Column="42" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
