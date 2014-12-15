@@ -5,7 +5,12 @@ public class Game : MonoBehaviour
 {
     public string nextLevelName;
     public string lostLevelName;
-    public Wave[] waves;
+	[System.Serializable]
+	public class WaveClass
+	{
+		public Wave[] wave;
+	}
+    public WaveClass[] waves;
     public int mischief;
     public int health;
     public int maxHealth;
@@ -34,8 +39,11 @@ public class Game : MonoBehaviour
         if (waveRunning)
             return;
 
-        if (waveNumber < waves.Length) {
-            waves[waveNumber].Run();
+		if (waveNumber < waves[0].wave.Length) {
+			for (int i = 0; i < waves.Length; i++)
+			{
+            	waves[i].wave[waveNumber].Run();
+			}
             waveRunning = true;
             waveNumber++;
         }
@@ -67,7 +75,7 @@ public class Game : MonoBehaviour
     {
         if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0) {
             waveRunning = false;
-            if (waveNumber == waves.Length) {
+			if (waveNumber == waves[0].wave.Length) {
                 if (health <= 0) {
                     Lose();
                 } else {
@@ -110,7 +118,7 @@ public class Game : MonoBehaviour
 
     public bool WavesOver()
     {
-        return waveNumber == waves.Length;
+		return waveNumber == waves[0].wave.Length;
     }
 
     public void ToggleAudio()
