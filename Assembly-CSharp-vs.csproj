@@ -76,6 +76,7 @@
      <Compile Include="Assets\Scripts\Wave.cs" />
      <Compile Include="Assets\Scripts\Waypoint.cs" />
      <Compile Include="Assets\Scripts\WetEffect.cs" />
+     <Compile Include="Assets\test001.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
