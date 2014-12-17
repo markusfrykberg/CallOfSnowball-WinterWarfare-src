@@ -42,7 +42,8 @@ public class Gui : MonoBehaviour
     private Texture2D cursorTexture;
     private Game game;
     private GameObject towerRange;
-    private Tower towerMenu;
+	[HideInInspector]
+    public Tower towerMenu;
     private bool canPlace;
     private bool winWindow = false;
     private bool loseWindow = false;

@@ -130,7 +130,10 @@ public class Tower : MonoBehaviour
 
     public void OnMouseDown()
     {
-        gui.TowerMenu(this);
+		if (gui.towerMenu == null)
+		{
+        	gui.TowerMenu(this);
+		}
     }
 
     public void OnMouseEnter()
