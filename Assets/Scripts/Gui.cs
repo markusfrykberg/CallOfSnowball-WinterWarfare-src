@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class Gui : MonoBehaviour
-{
+{	
     public Tower regularTower;
     public Texture2D regularTowerTexture;
     public Tower rapidTower;
@@ -11,7 +11,8 @@ public class Gui : MonoBehaviour
     public Texture2D waterTowerTexture;
     public Tower catapultTower;
     public Texture2D catapultTowerTexture;
-    public Texture2D defeatTexture, victoryTexture;
+    public Texture2D defeatTexture, victoryTexture, pauseTexture;
+	public Texture2D pauseTextTexture;
     public GUIStyle buttonStyle;
     public GUIStyle buttonDisbStyle;
     public GUIStyle startWaveStyle;
@@ -46,13 +47,34 @@ public class Gui : MonoBehaviour
     private bool canPlace;
     private bool winWindow = false;
     private bool loseWindow = false;
-
+	private bool pauseWindow=false;
     public void Start()
     {
         game = GameObject.Find("Game").GetComponent<Game>();
         towerRange = GameObject.Find("TowerRange");
         towerMenu = null;
+
     }
+
+	public void Update(){
+
+
+		// Hotkeys for builder
+		if (Input.GetButtonDown("Regular") && game.mischief >= regularTower.cost)
+		   StartDrag(regularTower);
+		if (Input.GetButtonDown("Water")&& game.mischief >= waterTower.cost)
+			StartDrag(waterTower);
+		if (Input.GetButtonDown("Rapid")&& game.mischief >= rapidTower.cost)
+			StartDrag(rapidTower);
+		if (Input.GetButtonDown("Catapult")&& game.mischief >= catapultTower.cost)
+			StartDrag(catapultTower);
+
+		// Paus meny
+		if (Input.GetButtonDown ("Escape"))
+						pauseWindow = !pauseWindow;
+
+
+		}
 
     public void StartDrag(Tower tower)
     {
@@ -81,6 +103,10 @@ public class Gui : MonoBehaviour
 
     public void OnGUI()
     {
+
+		if (pauseWindow)
+						DrawPauseWindow ();
+
         sHeight = 600;
         sWidth = sHeight * Screen.width / Screen.height;
         screenf = Screen.height / (float)sHeight;
@@ -130,6 +156,7 @@ public class Gui : MonoBehaviour
             DrawTowerMenu();
         }
 
+
         if (IsDragging()) {
             if (canPlace) {
                 towerRange.GetComponent<SpriteRenderer>().color
@@ -153,6 +180,7 @@ public class Gui : MonoBehaviour
         }
     }
 
+
     public void TowerButton(float x, float y, Tower t, Texture2D image)
     {
         if (game.mischief < t.cost)
@@ -160,7 +188,7 @@ public class Gui : MonoBehaviour
         else
             GUI.color = enblColor;
         Rect rect = new Rect(x, y, 60, 60);
-        if (GUI.Button(rect, image, towerButtonStyle)) {
+        if (GUI.Button(rect, image, towerButtonStyle) ) {
             if (game.mischief >= t.cost) {
                 StartDrag(t);
             }
@@ -326,4 +354,33 @@ public class Gui : MonoBehaviour
         }
         GUI.EndGroup();
     }
+
+	private void DrawPauseWindow()
+	{
+		float menuWidth = 330;
+		float menuHeight = 380;
+		GUI.Box(new Rect(0, 0, sWidth, sHeight), "", boxStyle);
+		GUI.BeginGroup(new Rect(sWidth / 2 - menuWidth / 2,
+		                        sHeight / 2 - menuHeight / 2,
+		                        menuWidth, menuHeight));
+		GUI.Box(new Rect(0, 0, menuWidth, menuHeight),
+		        "", noBgBoxStyle);
+		GUI.DrawTexture(new Rect(menuWidth / 2f - 2228f * 0.126f / 2f,
+		                         96f,
+		                         2228f * 0.126f, 2047f * 0.126f), pauseTexture);
+		GUI.DrawTexture(new Rect(0, 20, menuWidth, menuWidth / 750 * 150),
+		                pauseTextTexture);
+		float buttonWidth = 110;
+		if (GUI.Button(new Rect(menuWidth / 2 - buttonWidth - 5,
+		                        menuHeight - 40, buttonWidth, 30),
+		               "Quit", buttonStyle)) {
+			Application.LoadLevel(startMenuName);
+		}
+		if (GUI.Button(new Rect(menuWidth / 2 + 5,
+		                        menuHeight - 40, buttonWidth, 30),
+		               "Restart Level", buttonStyle)) {
+			game.RestartLevel();
+		}
+		GUI.EndGroup();
+	}
 }

@@ -46,10 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Curve.cs" />
      <Compile Include="Assets\Scripts\Attack.cs" />
      <Compile Include="Assets\Scripts\CatapultTower.cs" />
      <Compile Include="Assets\Scripts\ColdEffect.cs" />
+     <Compile Include="Assets\Scripts\Curve.cs" />
      <Compile Include="Assets\Scripts\Effect.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\FatEnemy.cs" />
@@ -76,6 +76,7 @@
      <Compile Include="Assets\Scripts\Wave.cs" />
      <Compile Include="Assets\Scripts\Waypoint.cs" />
      <Compile Include="Assets\Scripts\WetEffect.cs" />
+     <Compile Include="Assets\test001.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
