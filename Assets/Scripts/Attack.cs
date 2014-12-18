@@ -58,15 +58,17 @@ public class Attack : MonoBehaviour
 
     public virtual void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "Enemy"
-            || coll.gameObject.tag == "Static") {
+        if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "Static") {
             coll.gameObject.GetComponent<Enemy>().Hit(hitDamage, effect, this);
+			Explode();
+			Destroy(gameObject);
         }
 		//if(coll.gameObject.tag != "BackGround"){
-       		Explode();
-       	 	Destroy(gameObject);
+//       		Explode();
+//       	 	Destroy(gameObject);
 		//}
     }
+
 
     public void SetTtl(float ttl)
     {

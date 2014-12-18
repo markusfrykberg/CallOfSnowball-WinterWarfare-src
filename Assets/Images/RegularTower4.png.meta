@@ -39,7 +39,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 400
+  spritePixelsToUnits: 600
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
@@ -50,18 +50,18 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 258
-        height: 353
+        width: 410
+        height: 558
       alignment: 9
       pivot: {x: .5, y: .0299999993}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: RegularTower4_1
       rect:
         serializedVersion: 2
-        x: 258
+        x: 410
         y: 0
-        width: 258
-        height: 353
+        width: 410
+        height: 558
       alignment: 9
       pivot: {x: .5, y: .0299999993}
       border: {x: 0, y: 0, z: 0, w: 0}

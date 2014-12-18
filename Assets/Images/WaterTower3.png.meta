@@ -48,9 +48,9 @@ TextureImporter:
     - name: WaterTower3_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 28
         y: 0
-        width: 300
+        width: 344
         height: 360
       alignment: 9
       pivot: {x: .5, y: .0299999993}
@@ -58,9 +58,9 @@ TextureImporter:
     - name: WaterTower3_1
       rect:
         serializedVersion: 2
-        x: 300
+        x: 373
         y: 0
-        width: 300
+        width: 344
         height: 360
       alignment: 9
       pivot: {x: .5, y: .0299999993}
