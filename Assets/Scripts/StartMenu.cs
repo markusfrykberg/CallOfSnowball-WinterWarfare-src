@@ -43,19 +43,24 @@ public class StartMenu : MonoBehaviour
         float buttonWidth = 270 * 0.6f;
         float buttonHeight = 120 * 0.6f;
         GUI.BeginGroup(new Rect(sWidth / 2 - buttonWidth / 2, 300,
-                                buttonWidth, buttonHeight * 3));
+                                buttonWidth, buttonHeight * 4));
 
         if (GUI.Button(new Rect(0, 0, buttonWidth, buttonHeight),
                                 "", startStyle)) {
-            Application.LoadLevel(firstLevelName);
+			Application.LoadLevel("WorldMap");
         }
+		if (GUI.Button(new Rect(0, buttonHeight, buttonWidth, buttonHeight),
+		               "", startStyle)) {
+			PlayerPrefs.SetInt("LevelTracker",0);
+			Application.LoadLevel("WorldMap");
+		}
 
-        if (GUI.Button(new Rect(0, buttonHeight, buttonWidth, buttonHeight),
+        if (GUI.Button(new Rect(0, buttonHeight*2, buttonWidth, buttonHeight),
                                 "", creditsStyle)) {
             credits = true;
         }
 
-        if (GUI.Button(new Rect(0, buttonHeight * 2, buttonWidth, buttonHeight),
+        if (GUI.Button(new Rect(0, buttonHeight * 3, buttonWidth, buttonHeight),
                                 "", quitStyle)) {
             Application.Quit();
         }

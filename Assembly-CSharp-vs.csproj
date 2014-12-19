@@ -57,6 +57,8 @@
      <Compile Include="Assets\Scripts\Goal.cs" />
      <Compile Include="Assets\Scripts\Gui.cs" />
      <Compile Include="Assets\Scripts\HelmetEnemy.cs" />
+     <Compile Include="Assets\Scripts\LevelMarker.cs" />
+     <Compile Include="Assets\Scripts\LevelScriptTest.cs" />
      <Compile Include="Assets\Scripts\ParentEnemy.cs" />
      <Compile Include="Assets\Scripts\RapidTower.cs" />
      <Compile Include="Assets\Scripts\RegularEnemy.cs" />

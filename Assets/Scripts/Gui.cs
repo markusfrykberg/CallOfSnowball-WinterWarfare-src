@@ -320,7 +320,8 @@ public class Gui : MonoBehaviour
             if (GUI.Button(new Rect(menuWidth / 2 + 5,
                                     menuHeight - 40, buttonWidth, 30),
                            "Next level", buttonStyle)) {
-                game.LoadNextLevel();
+				PlayerPrefs.SetInt ("LevelTracker", Application.loadedLevel);
+				Application.LoadLevel ("WorldMap");
             }
         }
         GUI.EndGroup();
