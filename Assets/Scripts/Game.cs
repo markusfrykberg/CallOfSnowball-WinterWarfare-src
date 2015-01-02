@@ -12,6 +12,7 @@ public class Game : MonoBehaviour
 	}
     public WaveClass[] waves;
     public int mischief;
+	public int score;
     public int health;
     public int maxHealth;
     public AudioClip Victory;
@@ -23,6 +24,8 @@ public class Game : MonoBehaviour
 
     public void Start()
     {
+		score = PlayerPrefs.GetInt("CurrentTotalScore");
+		Debug.Log (score);
         gui = GameObject.Find("Gui").GetComponent<Gui>();
         waveNumber = 0;
         waveRunning = false;
