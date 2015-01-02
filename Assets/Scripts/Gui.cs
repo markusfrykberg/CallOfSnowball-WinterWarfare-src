@@ -69,7 +69,17 @@ public class Gui : MonoBehaviour
 		if (Input.GetButtonDown("Catapult")&& game.mischief >= catapultTower.cost)
 			StartDrag(catapultTower);
 
-		// Paus meny
+		// hotkey for upgradeTower
+		if (Input.GetButtonDown ("Upgrade") && towerMenu)
+						UpgradeTower ();
+		// hotkey for sellTower
+		if (Input.GetButtonDown ("Sell") && towerMenu)
+						SellTower ();
+		//hotkey for close
+		if (Input.GetButtonDown ("Close") && towerMenu)
+						towerMenu = null;
+
+		// Pause meny
 		if (Input.GetButtonDown ("Escape"))
 						pauseWindow = !pauseWindow;
 
@@ -104,9 +114,13 @@ public class Gui : MonoBehaviour
     public void OnGUI()
     {
 
-		if (pauseWindow)
-						DrawPauseWindow ();
+		if (pauseWindow) {
 
+						DrawPauseWindow ();
+						Time.timeScale = 0;
+				} 
+		else
+						Time.timeScale = 1;
         sHeight = 600;
         sWidth = sHeight * Screen.width / Screen.height;
         screenf = Screen.height / (float)sHeight;
@@ -260,26 +274,21 @@ public class Gui : MonoBehaviour
             upgradeButtonStyle = buttonStyle;
         }
         if (towerMenu.nextUpgrade == null) {
-            GUI.Button(new Rect(0, 30, 150, 30),
+						GUI.Button (new Rect (0, 30, 150, 30),
                        "No more upgrades", buttonDisbStyle);
-        } else if (GUI.Button(new Rect(0, 30, menuWidth, 30),
+				} else if (GUI.Button (new Rect (0, 30, menuWidth, 30),
                               "Upgrade (" + towerMenu.upgradeCost + ")",
-                              upgradeButtonStyle)
-                   && towerMenu.nextUpgrade != null
-                   && game.mischief >= towerMenu.upgradeCost) {
-            game.AddMischief(-towerMenu.upgradeCost);
-            Instantiate(towerMenu.nextUpgrade,
-                        towerMenu.transform.position,
-                        Quaternion.identity);
-            Destroy(towerMenu.gameObject);
-            towerMenu = null;
-        }
+                              upgradeButtonStyle)) {
+						UpgradeTower ();
+				}
+
         if (towerMenu != null && GUI.Button(new Rect(0, 60, menuWidth, 30),
                                             "Sell (" + towerMenu.cost + ")",
                                             buttonStyle)) {
-            game.AddMischief(towerMenu.cost);
-            Destroy(towerMenu.gameObject);
-            towerMenu = null;
+			SellTower();
+//            game.AddMischief(towerMenu.cost);
+//            Destroy(towerMenu.gameObject);
+//            towerMenu = null;
         }
         if (towerMenu != null
             && GUI.Button(new Rect(0, 90, menuWidth, 30), "Close",
@@ -300,12 +309,16 @@ public class Gui : MonoBehaviour
         GUI.Box(new Rect(0, 0, menuWidth, menuHeight),
                 "", noBgBoxStyle);
         GUI.DrawTexture(new Rect(menuWidth / 2f - 355f * 0.5f / 2f,
-                                 96,
+                                 120,
                                  355f * 0.5f, 499f * 0.5f), victoryTexture);
         GUI.DrawTexture(new Rect(0, 0, menuWidth, menuWidth / 750 * 148),
                         victoryTextTexture);
+	
         GUI.Label(new Rect(0, 70, menuWidth, 20),
-                  "Score: " + game.GetScore(), textCenterStyle);
+                  "Level Score: " + game.GetScore(), textCenterStyle);
+		GUI.Label(new Rect(0, 100, menuWidth, 20),
+		          "Total Score: " + (game.score + game.GetScore()), textCenterStyle);
+
         float buttonWidth = 110;
         if (GUI.Button(new Rect(menuWidth / 2 - buttonWidth - 5,
                                 menuHeight - 40, buttonWidth, 30),
@@ -320,6 +333,7 @@ public class Gui : MonoBehaviour
             if (GUI.Button(new Rect(menuWidth / 2 + 5,
                                     menuHeight - 40, buttonWidth, 30),
                            "Next level", buttonStyle)) {
+				PlayerPrefs.SetInt("CurrentTotalScore",game.score+game.GetScore());
 				PlayerPrefs.SetInt ("LevelTracker", Application.loadedLevel);
 				Application.LoadLevel ("WorldMap");
             }
@@ -384,4 +398,24 @@ public class Gui : MonoBehaviour
 		}
 		GUI.EndGroup();
 	}
+
+	private void UpgradeTower(){
+		if (towerMenu.nextUpgrade != null && game.mischief >= towerMenu.upgradeCost) {
+						game.AddMischief (-towerMenu.upgradeCost);
+						Instantiate (towerMenu.nextUpgrade,
+			            towerMenu.transform.position,
+			            Quaternion.identity);
+
+						Destroy (towerMenu.gameObject);
+						towerMenu = null;
+
+				}	
+		}
+
+	private void SellTower(){
+		game.AddMischief(towerMenu.cost*2/3);
+		Destroy(towerMenu.gameObject);
+		towerMenu = null;
+
+		}
 }

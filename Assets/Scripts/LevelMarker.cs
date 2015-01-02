@@ -14,16 +14,12 @@ public class LevelMarker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-//		LevelTracker = 0;
-//		SetLevelTracker ();
+
 		currentLevel = GetLevelTracker ();
 		LevelPositions = levels.GetComponentsInChildren<Transform> ();
-//		GetLevelTracker ();
+
 		transform.position = LevelPositions [currentLevel].position;
-//		Debug.Log (LevelTracker);
-//		nextLevel = LevelTracker + 1;
-//		LevelTracker= nextLevel;
-//		SetLevelTracker ();
+
 
 		Debug.Log (LevelTracker);
 
@@ -40,8 +36,7 @@ public class LevelMarker : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-//		currentLevel++;
-//		SetLevelTracker (currentLevel);
+
 		Debug.Log ("click ");
 		if (currentLevel >= 30)
 						currentLevel = 0;

@@ -6,7 +6,8 @@ public class Enemy : MonoBehaviour
 {
     public bool deathNotice = false;
     public AudioClip death_sound;
-    public int health;
+    public float health;
+	public float maxhealth;
     public float speed;
     public int reward;
     public int damage;
@@ -24,8 +25,11 @@ public class Enemy : MonoBehaviour
     protected float lastDot;
     protected float deathTime;
 
+	protected GameObject healthbar=null;
+
     public virtual void Start()
     {
+		maxhealth = health;
         game = GameObject.Find("Game").GetComponent<Game>();
         gui = GameObject.Find("Gui").GetComponent<Gui>();
         spriteR = GetComponent<SpriteRenderer>();
@@ -40,8 +44,14 @@ public class Enemy : MonoBehaviour
 
     public virtual void Update()
     {
+
+		if (healthbar) {
+			healthbar.transform.localScale= new Vector3(health/maxhealth*5,1,1);
+				}
+
         newSpeed = speed;
         if (effect != null) {
+			spriteR.color= Color.blue;
             newSpeed = speed * effect.speed;
             if (Time.time - lastDot >= 1f) {
                 Hit(effect.damagePerSecond, null);
@@ -50,6 +60,7 @@ public class Enemy : MonoBehaviour
 
             effect.duration -= Time.deltaTime;
             if (effect.duration <= 0f) {
+				spriteR.color=Color.white;
                 effect = null;
             }
         }

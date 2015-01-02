@@ -52,6 +52,8 @@ public class StartMenu : MonoBehaviour
 		if (GUI.Button(new Rect(0, buttonHeight, buttonWidth, buttonHeight),
 		               "", startStyle)) {
 			PlayerPrefs.SetInt("LevelTracker",0);
+
+			PlayerPrefs.SetInt("CurrentTotalScore",0);
 			Application.LoadLevel("WorldMap");
 		}
 
