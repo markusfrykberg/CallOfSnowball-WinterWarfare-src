@@ -13,6 +13,7 @@ public class Tower : MonoBehaviour
     public string towerName;
     public Tower nextUpgrade;
     public int upgradeCost;
+	public int investedValue;
     public SpriteAnimation fireAnim;
     public string strFrate, strRange, strDamage, strUpgrades;
     protected float cooldown;
@@ -130,7 +131,8 @@ public class Tower : MonoBehaviour
 
     public void OnMouseDown()
     {
-        gui.TowerMenu(this);
+	gui.TowerMenu(this);
+		Debug.Log ("InvesedvValue"+investedValue);
     }
 
     public void OnMouseEnter()

@@ -21,7 +21,8 @@ public class TowerPlacement : MonoBehaviour
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pos.z = 0f;
             if (CanPlace(pos) && game.AddMischief(-t.cost)) {
-                Instantiate(t, pos, Quaternion.identity);
+                Tower newTower=Instantiate(t, pos, Quaternion.identity) as Tower;
+				newTower.investedValue=t.cost;
             } else {
                 gui.StartDrag(t);
             }
