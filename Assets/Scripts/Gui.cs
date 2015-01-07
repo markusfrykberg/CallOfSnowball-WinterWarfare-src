@@ -283,7 +283,7 @@ public class Gui : MonoBehaviour
 				}
 
         if (towerMenu != null && GUI.Button(new Rect(0, 60, menuWidth, 30),
-                                            "Sell (" + towerMenu.cost + ")",
+                                            "Sell (" + towerMenu.investedValue*3/4 + ")",
                                             buttonStyle)) {
 			SellTower();
 //            game.AddMischief(towerMenu.cost);
@@ -402,9 +402,12 @@ public class Gui : MonoBehaviour
 	private void UpgradeTower(){
 		if (towerMenu.nextUpgrade != null && game.mischief >= towerMenu.upgradeCost) {
 						game.AddMischief (-towerMenu.upgradeCost);
-						Instantiate (towerMenu.nextUpgrade,
+
+						Tower nextTower =Instantiate (towerMenu.nextUpgrade,
 			            towerMenu.transform.position,
-			            Quaternion.identity);
+			            Quaternion.identity) as Tower;	
+		
+						nextTower.investedValue=towerMenu.investedValue+towerMenu.upgradeCost;
 
 						Destroy (towerMenu.gameObject);
 						towerMenu = null;
@@ -413,7 +416,7 @@ public class Gui : MonoBehaviour
 		}
 
 	private void SellTower(){
-		game.AddMischief(towerMenu.cost*2/3);
+		game.AddMischief(towerMenu.investedValue*3/4);
 		Destroy(towerMenu.gameObject);
 		towerMenu = null;
 
