@@ -1,0 +1,25 @@
+Graferna visar Gold per Dps. Desto lägre värde ett torn har i grafen desto starkare är det.
+
+Dmgmult (E rad högst upp) är Damage multipliers som finns på tornen i unity.
+
+Upgrades ger approximativt samma guld effeciency på tornen.
+
+______________________________________________________________________________________
+
+
+5+ targets vinner tech i dps. Tech har även extremt större range.
+
+Hooser vinner dps men range e kass. tech har högre uptime.
+
+Hooser i vanliga fall har DOT på 5 targets och Tech träffar 3. Beronde på bana kan tornen va olika bra
+
+Hooser torn stackar inte.
+
+Hooser behöver hög dps låg uptime.
+
+_________________________________________________________________________________________
+
+
+
+
+
